@@ -1,0 +1,6 @@
+D:/Coding/C-Projects/cmake-build-debug/CMakeFiles/edit_cache.dir
+D:/Coding/C-Projects/cmake-build-debug/CMakeFiles/main.dir
+D:/Coding/C-Projects/cmake-build-debug/CMakeFiles/wurfel.dir
+D:/Coding/C-Projects/cmake-build-debug/CMakeFiles/rechner.dir
+D:/Coding/C-Projects/cmake-build-debug/CMakeFiles/vektoren.dir
+D:/Coding/C-Projects/cmake-build-debug/CMakeFiles/rebuild_cache.dir
