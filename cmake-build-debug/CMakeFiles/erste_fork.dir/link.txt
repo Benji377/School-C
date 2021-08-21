@@ -1,0 +1,3 @@
+C:\Users\benbe\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\203.7717.62\bin\cmake\win\bin\cmake.exe -E rm -f CMakeFiles\erste_fork.dir/objects.a
+C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\ar.exe cr CMakeFiles\erste_fork.dir/objects.a @CMakeFiles\erste_fork.dir\objects1.rsp
+C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\gcc.exe -g   -Wl,--whole-archive CMakeFiles\erste_fork.dir/objects.a -Wl,--no-whole-archive  -o erste_fork.exe -Wl,--out-implib,liberste_fork.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\erste_fork.dir\linklibs.rsp

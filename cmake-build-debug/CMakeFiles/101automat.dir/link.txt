@@ -1,0 +1,3 @@
+C:\Users\benbe\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\211.7142.21\bin\cmake\win\bin\cmake.exe -E rm -f CMakeFiles\101automat.dir/objects.a
+C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\ar.exe cr CMakeFiles\101automat.dir/objects.a @CMakeFiles\101automat.dir\objects1.rsp
+C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\gcc.exe -g -Wl,--whole-archive CMakeFiles\101automat.dir/objects.a -Wl,--no-whole-archive -o 101automat.exe -Wl,--out-implib,lib101automat.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\101automat.dir\linklibs.rsp

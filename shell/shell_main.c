@@ -1,271 +1,254 @@
+/*
+ * Shell erstellt von Benjamin Demetz
+ * Weitere Dateien im gleichen Ordner:
+ * - Laborbericht: shell_laborbericht.docx
+ * - Handbuch: shell_handbuch.docx
+ * - Testbericht: shell_testbericht.docx
+ */
+
+
 #include <sys/wait.h>
-#include <sys/types.h>
 #include <unistd.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
 
-/*
-  Function Declarations for builtin shell commands:
- */
-int lsh_cd(char **args);
-int lsh_help(char **args);
-int lsh_exit(char **args);
+// Hier werden die Funktionen für die Shellbefehle deklariert
+int shell_cd(char **args);
+int shell_help();
+int shell_exit();
 
-/*
-  List of builtin commands, followed by their corresponding functions.
- */
-char *builtin_str[] = {
-        "cd",
-        "help",
-        "exit"
-};
+// Diese String beinhaltet alle Funktionen die ohne externe Befehle funktionieren
+// Die Funktionen dazu wurden bereits oben deklariert
+char *eingebaut_str[] = {"cd", "help", "exit"};
 
-int (*builtin_func[]) (char **) = {
-        &lsh_cd,
-        &lsh_help,
-        &lsh_exit
-};
+// Beinhaltet alle bereits in der Shell existierenden Funktionen
+int (*eingebaut_func[]) (char **) = {&shell_cd, &shell_help, &shell_exit};
 
-int lsh_num_builtins() {
-    return sizeof(builtin_str) / sizeof(char *);
+// Funktion um die Anzahl der eingebauten Befehle zurückzugeben
+int shell_anzahl_eingebaut() {
+    return sizeof(eingebaut_str) / sizeof(char *);
 }
 
-/*
-  Builtin function implementations.
-*/
-
 /**
-   @brief Bultin command: change directory.
-   @param args List of args.  args[0] is "cd".  args[1] is the directory.
-   @return Always returns 1, to continue executing.
+   Ist einer der in der Shell eingebaute Befehl. Es wird benutzt um in der Shell
+   Pfad zu wechseln.
+   @param args List der Argumente  args[0] ist "cd".  args[1] ist das Verzeichnis.
+   @return gibt immer 1 zurück um weiter auszuführen
  */
-int lsh_cd(char **args)
-{
+int shell_cd(char **args) {
+    // Wenn kein Argument gegeben wurde, wird ein Fehler ausgegeben
     if (args[1] == NULL) {
-        fprintf(stderr, "lsh: expected argument to \"cd\"\n");
+        fprintf(stderr, "Shell: \"cd\" braucht ein Argument\n");
     } else {
+        // Wenn es nicht möglich war, Verzeichnis zu wechseln wird auch ein Fehler zurückzugeben
         if (chdir(args[1]) != 0) {
-            perror("lsh");
+            perror("Shell konnte nicht das Verzeichnis wechseln");
         }
     }
+    // Gibt immer 1 zurück damit die Shell nicht unterbrochen wird
     return 1;
 }
 
 /**
-   @brief Builtin command: print help.
-   @param args List of args.  Not examined.
-   @return Always returns 1, to continue executing.
+   Ist einer der in der Shell eingebaute Befehle und soll den Benutzer beim Benutzen der Shell aushelfen
+   @return Gibt immer 1 zurück damit die Shell weiter ausführen kann
  */
-int lsh_help(char **args)
-{
-    int i;
-    printf("Stephen Brennan's LSH\n");
-    printf("Type program names and arguments, and hit enter.\n");
-    printf("The following are built in:\n");
+int shell_help() {
+    printf("Um Befehle auszuführen, geben sie einfach die Programmnamen ein.\n"
+           "Vergessen sie dabei nicht die Argumente jedes Befehls wenn notwendig\n"
+           "Wenn Sie mehr dazu wissen möchten können sie das Handbuch verwenden dass sich im gleichen Ordner befindet\n"
+           "Diese hier sind die in der Shell eingebauten Befehle:\n");
 
-    for (i = 0; i < lsh_num_builtins(); i++) {
-        printf("  %s\n", builtin_str[i]);
+    for (int i = 0; i < shell_anzahl_eingebaut(); i++) {
+        printf("- %s\n", eingebaut_str[i]);
     }
 
-    printf("Use the man command for information on other programs.\n");
+    printf("Für Informationen über andere Befehle oder Programme benutzen Sie den \"man\" Befehl\n");
     return 1;
 }
 
 /**
-   @brief Builtin command: exit.
-   @param args List of args.  Not examined.
-   @return Always returns 0, to terminate execution.
+   Ein in der Shell eingebaute Befehl um das Programm abzubrechen.
+   Solange eine Methode 1 zurückgibt wird die Shell weiterhin ausgeführt, wenn 0 zurückgegeben wird,
+   wird die Shell fehlerfrei abgebrochen
+   @return Gibt immer 0 zurück um das Programm fehlerfrei abzubrechen
  */
-int lsh_exit(char **args)
-{
+int shell_exit() {
     return 0;
 }
 
 /**
-  @brief Launch a program and wait for it to terminate.
-  @param args Null terminated list of arguments (including program).
-  @return Always returns 1, to continue execution.
+  Erstellt für jeden Befehl ein neuen Prozess damit die Shell während der Ausführung
+  des Befehls nicht unterbrochen werden muss
+  @param args Sind die Argumente für jeden Befehl
+  @return Gibt immer 1 zurück damit die Shell nicht unterbrochen werden muss
  */
-int lsh_launch(char **args)
-{
+int shell_prozess(char **args) {
     pid_t pid;
     int status;
 
     pid = fork();
     if (pid == 0) {
-        // Child process
+        // Bei Fehler mit dem Kindprozess
         if (execvp(args[0], args) == -1) {
-            perror("lsh");
+            perror("Fehler mit Kindprozess");
         }
         exit(EXIT_FAILURE);
     } else if (pid < 0) {
-        // Error forking
-        perror("lsh");
+        // Fehler mit Fork
+        perror("Fehler mit Fork");
     } else {
-        // Parent process
+        // Führt Elternprozess aus solange keine Fehler auftreten
         do {
             waitpid(pid, &status, WUNTRACED);
         } while (!WIFEXITED(status) && !WIFSIGNALED(status));
     }
-
     return 1;
 }
 
 /**
-   @brief Execute shell built-in or launch program.
-   @param args Null terminated list of arguments.
-   @return 1 if the shell should continue running, 0 if it should terminate
+   Führt die verschiedene Befehle die der Shell übergeben werden aus. Diese Methode gibt auch an,
+   ob die Shell weiterhin ausgeführt werden, oder ob die Shell abgebrochen werden soll
+   @param args Befehle die ausgeführt werden sollen
+   @return 1 wenn die Shell weiterhin ausgeführt werden soll, sonst 0 um abzubrechen
  */
-int lsh_execute(char **args)
-{
-    int i;
+int shell_execute(char **args) {
 
+    // Wenn nichts eingegeben wurde soll die Shell einfach weiter ausgeführt werden
     if (args[0] == NULL) {
-        // An empty command was entered.
         return 1;
     }
-
-    for (i = 0; i < lsh_num_builtins(); i++) {
-        if (strcmp(args[0], builtin_str[i]) == 0) {
-            return (*builtin_func[i])(args);
+    // Hier werden die eingebaute Programme ausgeführt
+    for (int i = 0; i < shell_anzahl_eingebaut(); i++) {
+        if (strcmp(args[0], eingebaut_str[i]) == 0) {
+            return (*eingebaut_func[i])(args);
         }
     }
-
-    return lsh_launch(args);
+    // Ansonsten wird das eingegebene Befehl ausgeführt
+    return shell_prozess(args);
 }
 
 /**
-   @brief Read a line of input from stdin.
-   @return The line from stdin.
+   Sehr wichtige Methode die die vom Benutzer eingegebenen Befehle liest und zurückgibt
+   @return Die von stdin gelesene Zeile
  */
-char *lsh_read_line(void)
-{
-#ifdef LSH_USE_STD_GETLINE
-    char *line = NULL;
-  ssize_t bufsize = 0; // have getline allocate a buffer for us
-  if (getline(&line, &bufsize, stdin) == -1) {
-    if (feof(stdin)) {
-      exit(EXIT_SUCCESS);  // We received an EOF
-    } else  {
-      perror("lsh: getline\n");
-      exit(EXIT_FAILURE);
-    }
-  }
-  return line;
-#else
-#define LSH_RL_BUFSIZE 1024
-    int bufsize = LSH_RL_BUFSIZE;
+char *shell_zeilenleser(void) {
+    int bufsize = 1024;
     int position = 0;
     char *buffer = malloc(sizeof(char) * bufsize);
     int c;
 
+    // Bei Fehlern mit dem Buffer
     if (!buffer) {
-        fprintf(stderr, "lsh: allocation error\n");
+        fprintf(stderr, "Shell: Buffer falsch angelegt\n");
         exit(EXIT_FAILURE);
     }
-
+    // Praktisch unendliche Schleife die jedes Character in einer Zeile liest
     while (1) {
-        // Read a character
+        // Liest nur ein Character
         c = getchar();
 
+        // EOF = End of line --> Die Zeile ist zu Ende
         if (c == EOF) {
             exit(EXIT_SUCCESS);
+        // Bei neuer Zeile soll ein null an der Stelle im Buffer gesetzt werden
         } else if (c == '\n') {
             buffer[position] = '\0';
             return buffer;
+        // Wenn ein Zeichen gefunden wurde, wird das Zeichne im Buffer gesetzt
         } else {
             buffer[position] = c;
         }
+        // Geht somit den gesamten Buffer durch
         position++;
 
-        // If we have exceeded the buffer, reallocate.
+        // Buffer hat nur platz für 1024 Zeichen, sollte reichen, aber wenn nicht dann wird es verdoppelt
         if (position >= bufsize) {
-            bufsize += LSH_RL_BUFSIZE;
+            bufsize += 1024;
+            // Buffer wird neu angelegt
             buffer = realloc(buffer, bufsize);
+            // Wenn der Buffer falsch angelegt wurde, wird ein Fehler ausgegeben
             if (!buffer) {
-                fprintf(stderr, "lsh: allocation error\n");
+                fprintf(stderr, "Shell: Buffer falsch angelegt\n");
                 exit(EXIT_FAILURE);
             }
         }
     }
-#endif
 }
 
-#define LSH_TOK_BUFSIZE 64
-#define LSH_TOK_DELIM " \t\r\n\a"
 /**
-   @brief Split a line into tokens (very naively).
-   @param line The line.
-   @return Null-terminated array of tokens.
+   Methode um die übergebenenen Zeile in "Tokens" einzuteilen. Das wird gebraucht um
+   die Eingabe des Benutzers in Befehle und Argumente der Befehle
+   @param line Die Zeile die eingeteilt werden soll
+   @return Ein Array mit alle Tokens, also Befehl und Argumente
  */
-char **lsh_split_line(char *line)
+char **shell_zeilenspalter(char *line)
 {
-    int bufsize = LSH_TOK_BUFSIZE, position = 0;
+    int bufsize = 64, position = 0;
     char **tokens = malloc(bufsize * sizeof(char*));
     char *token, **tokens_backup;
 
+    // Wenn der Buffer falsch angelegt wurde, wird ein Fehler gemeldet
     if (!tokens) {
-        fprintf(stderr, "lsh: allocation error\n");
+        fprintf(stderr, "Shell: Buffer falsch angelegt\n");
         exit(EXIT_FAILURE);
     }
 
-    token = strtok(line, LSH_TOK_DELIM);
+    // Liest die Zeile bis ein Delnim-Zeichen gefunden wird
+    // Delnim-Zeichen: " \t\r\n\a"
+    token = strtok(line, " \t\r\n\a");
     while (token != NULL) {
         tokens[position] = token;
         position++;
 
+        // Wenn der Buffer nicht ausreicht, wird es verdoppelt und neu angelegt
         if (position >= bufsize) {
-            bufsize += LSH_TOK_BUFSIZE;
+            bufsize += 64;
+            // Speichert den Token
             tokens_backup = tokens;
+            // Buffer neu angelegt
             tokens = realloc(tokens, bufsize * sizeof(char*));
+            // Wenn beim neu angelegten Buffer ein Fehler auftritt
             if (!tokens) {
+                // Die bis jetzt gespeicherte Tokens werden gelöscht
                 free(tokens_backup);
-                fprintf(stderr, "lsh: allocation error\n");
+                // Fehlermeldung
+                fprintf(stderr, "Shell: Buffer falsch angelegt\n");
                 exit(EXIT_FAILURE);
             }
         }
-
-        token = strtok(NULL, LSH_TOK_DELIM);
+        // Ein Token wird von Zeilenanfang bis zu einem der folgenden Zeichen:
+        // " \t\r\n\a"
+        token = strtok(NULL, " \t\r\n\a");
     }
+    // Nachdem ein Token gelesen wurde, wird dort NULL eingetragen, damit der nächste gelesen werden kann
     tokens[position] = NULL;
     return tokens;
 }
 
 /**
-   @brief Loop getting input and executing it.
+   Steuert das gesamte Programm. Benutzt die verschiedenen oben deklarierten Methoden
+   um die Shell zu starten, Befehle auszuführen und die Shell zu beenden
+   @return status. 1 Bei Fehler, 0 wenn alles gut gegangen ist
  */
-void lsh_loop(void)
-{
+int main() {
     char *line;
     char **args;
     int status;
 
     do {
-        printf("> ");
-        line = lsh_read_line();
-        args = lsh_split_line(line);
-        status = lsh_execute(args);
+        // Wird am Anfang jeder Zeile geschrieben
+        printf("Shell> ");
+        // Deklariert die Variabeln jedes mal neu
+        line = shell_zeilenleser();
+        args = shell_zeilenspalter(line);
+        status = shell_execute(args);
 
+        // Nachdem die Shell den Befehl ausführt wird die Befehlszeile auf null gestellt
+        // Ansonsten würden Befehle mehrmals ausgeführt
         free(line);
         free(args);
     } while (status);
-}
-
-/**
-   @brief Main entry point.
-   @param argc Argument count.
-   @param argv Argument vector.
-   @return status code
- */
-int main(int argc, char **argv)
-{
-    // Load config files, if any.
-
-    // Run command loop.
-    lsh_loop();
-
-    // Perform any shutdown/cleanup.
-
     return EXIT_SUCCESS;
 }
