@@ -1,0 +1,1 @@
+/usr/bin/cc -g CMakeFiles/threads0.dir/Ubung01/threads0.c.o -o threads0  -lpthread 

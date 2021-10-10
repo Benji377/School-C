@@ -1,0 +1,18 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/hdd-storage/Coding/CProjects/Ubung00/ForkExercise.c
+sys/types.h
+-
+unistd.h
+-
+stdio.h
+-
+sys/wait.h
+-
+

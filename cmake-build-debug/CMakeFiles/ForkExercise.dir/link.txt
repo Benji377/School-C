@@ -1,0 +1,1 @@
+/usr/bin/cc -g CMakeFiles/ForkExercise.dir/Ubung00/ForkExercise.c.o -o ForkExercise 
