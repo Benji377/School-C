@@ -1,0 +1,1 @@
+/usr/bin/cc -g -rdynamic CMakeFiles/secondLayer.dir/Schichtenmodell/secondLayer.c.o -o secondLayer 
