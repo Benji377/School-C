@@ -1,8 +1,6 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/shell_main.dir/shell/shell_main.c.obj"
-  "libshell_main.dll.a"
-  "shell_main.exe"
-  "shell_main.exe.manifest"
+  "CMakeFiles/shell_main.dir/shell/shell_main.c.o"
+  "shell_main"
   "shell_main.pdb"
 )
 

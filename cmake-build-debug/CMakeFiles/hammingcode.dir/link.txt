@@ -1,3 +1,1 @@
-C:\Users\benbe\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\211.7142.21\bin\cmake\win\bin\cmake.exe -E rm -f CMakeFiles\hammingcode.dir/objects.a
-C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\ar.exe cr CMakeFiles\hammingcode.dir/objects.a @CMakeFiles\hammingcode.dir\objects1.rsp
-C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\gcc.exe -g -Wl,--whole-archive CMakeFiles\hammingcode.dir/objects.a -Wl,--no-whole-archive -o hammingcode.exe -Wl,--out-implib,libhammingcode.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\hammingcode.dir\linklibs.rsp
+/usr/bin/cc -g -rdynamic CMakeFiles/hammingcode.dir/Redundanz/hammingcode.c.o -o hammingcode 

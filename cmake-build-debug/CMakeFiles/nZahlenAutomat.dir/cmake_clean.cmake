@@ -1,8 +1,6 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/nZahlenAutomat.dir/automaten/nZahlenAutomat.c.obj"
-  "libnZahlenAutomat.dll.a"
-  "nZahlenAutomat.exe"
-  "nZahlenAutomat.exe.manifest"
+  "CMakeFiles/nZahlenAutomat.dir/automaten/nZahlenAutomat.c.o"
+  "nZahlenAutomat"
   "nZahlenAutomat.pdb"
 )
 

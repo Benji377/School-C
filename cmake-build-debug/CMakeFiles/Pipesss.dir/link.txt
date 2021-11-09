@@ -1,1 +1,0 @@
-/usr/bin/cc -g CMakeFiles/Pipesss.dir/Ubung00/Pipesss.c.o -o Pipesss 

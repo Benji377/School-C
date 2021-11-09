@@ -1,3 +1,1 @@
-C:\Users\benbe\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\211.7142.21\bin\cmake\win\bin\cmake.exe -E rm -f CMakeFiles\bakterien.dir/objects.a
-C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\ar.exe cr CMakeFiles\bakterien.dir/objects.a @CMakeFiles\bakterien.dir\objects1.rsp
-C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\gcc.exe -g -Wl,--whole-archive CMakeFiles\bakterien.dir/objects.a -Wl,--no-whole-archive -o bakterien.exe -Wl,--out-implib,libbakterien.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\bakterien.dir\linklibs.rsp
+/usr/bin/cc -g -rdynamic CMakeFiles/bakterien.dir/matrix/bakterien.c.o -o bakterien 

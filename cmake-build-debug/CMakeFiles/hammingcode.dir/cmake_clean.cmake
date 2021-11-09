@@ -1,9 +1,7 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/hammingcode.dir/Redundanz/hammingcode.c.obj"
-  "hammingcode.exe"
-  "hammingcode.exe.manifest"
+  "CMakeFiles/hammingcode.dir/Redundanz/hammingcode.c.o"
+  "hammingcode"
   "hammingcode.pdb"
-  "libhammingcode.dll.a"
 )
 
 # Per-language clean rules from dependency scanning.

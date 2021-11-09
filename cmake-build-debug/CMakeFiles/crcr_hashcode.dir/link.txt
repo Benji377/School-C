@@ -1,1 +1,0 @@
-/usr/bin/cc -g CMakeFiles/crcr_hashcode.dir/Ubung02/crcr_hashcode.c.o -o crcr_hashcode 

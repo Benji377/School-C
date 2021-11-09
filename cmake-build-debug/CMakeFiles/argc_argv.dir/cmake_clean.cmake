@@ -1,9 +1,7 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/argc_argv.dir/argc_argc/argc_argv.c.obj"
-  "argc_argv.exe"
-  "argc_argv.exe.manifest"
+  "CMakeFiles/argc_argv.dir/argc_argc/argc_argv.c.o"
+  "argc_argv"
   "argc_argv.pdb"
-  "libargc_argv.dll.a"
 )
 
 # Per-language clean rules from dependency scanning.

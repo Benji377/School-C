@@ -1,3 +1,1 @@
-C:\Users\benbe\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\211.7142.21\bin\cmake\win\bin\cmake.exe -E rm -f CMakeFiles\stack_struct.dir/objects.a
-C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\ar.exe cr CMakeFiles\stack_struct.dir/objects.a @CMakeFiles\stack_struct.dir\objects1.rsp
-C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\gcc.exe -g -Wl,--whole-archive CMakeFiles\stack_struct.dir/objects.a -Wl,--no-whole-archive -o stack_struct.exe -Wl,--out-implib,libstack_struct.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\stack_struct.dir\linklibs.rsp
+/usr/bin/cc -g -rdynamic CMakeFiles/stack_struct.dir/Erste_Programme/stack_struct.c.o -o stack_struct 

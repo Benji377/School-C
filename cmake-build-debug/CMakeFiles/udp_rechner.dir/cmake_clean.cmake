@@ -1,8 +1,6 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/udp_rechner.dir/Erste_Programme/udp_rechner.c.obj"
-  "libudp_rechner.dll.a"
-  "udp_rechner.exe"
-  "udp_rechner.exe.manifest"
+  "CMakeFiles/udp_rechner.dir/Erste_Programme/udp_rechner.c.o"
+  "udp_rechner"
   "udp_rechner.pdb"
 )
 

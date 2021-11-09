@@ -1,8 +1,6 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/primZahl.dir/Fork/primZahl.c.obj"
-  "libprimZahl.dll.a"
-  "primZahl.exe"
-  "primZahl.exe.manifest"
+  "CMakeFiles/primZahl.dir/Fork/primZahl.c.o"
+  "primZahl"
   "primZahl.pdb"
 )
 

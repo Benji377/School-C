@@ -1,3 +1,1 @@
-C:\Users\benbe\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\211.7142.21\bin\cmake\win\bin\cmake.exe -E rm -f CMakeFiles\drehmatrix.dir/objects.a
-C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\ar.exe cr CMakeFiles\drehmatrix.dir/objects.a @CMakeFiles\drehmatrix.dir\objects1.rsp
-C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\gcc.exe -g -Wl,--whole-archive CMakeFiles\drehmatrix.dir/objects.a -Wl,--no-whole-archive -o drehmatrix.exe -Wl,--out-implib,libdrehmatrix.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\drehmatrix.dir\linklibs.rsp
+/usr/bin/cc -g -rdynamic CMakeFiles/drehmatrix.dir/matrix/drehmatrix.c.o -o drehmatrix 

@@ -1,9 +1,7 @@
 file(REMOVE_RECURSE
-  "101automat.exe"
-  "101automat.exe.manifest"
+  "101automat"
   "101automat.pdb"
-  "CMakeFiles/101automat.dir/automaten/101automat.c.obj"
-  "lib101automat.dll.a"
+  "CMakeFiles/101automat.dir/automaten/101automat.c.o"
 )
 
 # Per-language clean rules from dependency scanning.

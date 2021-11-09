@@ -1,8 +1,6 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/stack_struct.dir/Erste_Programme/stack_struct.c.obj"
-  "libstack_struct.dll.a"
-  "stack_struct.exe"
-  "stack_struct.exe.manifest"
+  "CMakeFiles/stack_struct.dir/Erste_Programme/stack_struct.c.o"
+  "stack_struct"
   "stack_struct.pdb"
 )
 

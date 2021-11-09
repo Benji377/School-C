@@ -1,8 +1,6 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/prufung_plan.dir/prufung/prufung_plan.c.obj"
-  "libprufung_plan.dll.a"
-  "prufung_plan.exe"
-  "prufung_plan.exe.manifest"
+  "CMakeFiles/prufung_plan.dir/prufung/prufung_plan.c.o"
+  "prufung_plan"
   "prufung_plan.pdb"
 )
 

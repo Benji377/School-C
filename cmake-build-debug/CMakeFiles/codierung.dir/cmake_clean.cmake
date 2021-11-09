@@ -1,9 +1,7 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/codierung.dir/Redundanz/codierung.c.obj"
-  "codierung.exe"
-  "codierung.exe.manifest"
+  "CMakeFiles/codierung.dir/Redundanz/codierung.c.o"
+  "codierung"
   "codierung.pdb"
-  "libcodierung.dll.a"
 )
 
 # Per-language clean rules from dependency scanning.

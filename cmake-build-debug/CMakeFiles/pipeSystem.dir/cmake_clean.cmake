@@ -1,8 +1,6 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/pipeSystem.dir/Pipe/pipeSystem.c.obj"
-  "libpipeSystem.dll.a"
-  "pipeSystem.exe"
-  "pipeSystem.exe.manifest"
+  "CMakeFiles/pipeSystem.dir/Pipe/pipeSystem.c.o"
+  "pipeSystem"
   "pipeSystem.pdb"
 )
 

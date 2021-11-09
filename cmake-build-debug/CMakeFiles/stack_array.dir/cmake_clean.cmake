@@ -1,8 +1,6 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/stack_array.dir/Erste_Programme/stack_array.c.obj"
-  "libstack_array.dll.a"
-  "stack_array.exe"
-  "stack_array.exe.manifest"
+  "CMakeFiles/stack_array.dir/Erste_Programme/stack_array.c.o"
+  "stack_array"
   "stack_array.pdb"
 )
 

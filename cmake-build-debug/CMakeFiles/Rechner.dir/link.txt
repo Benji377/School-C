@@ -1,3 +1,0 @@
-C:\Users\benbe\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\211.7142.21\bin\cmake\win\bin\cmake.exe -E rm -f CMakeFiles\rechner.dir/objects.a
-C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\ar.exe cr CMakeFiles\rechner.dir/objects.a @CMakeFiles\rechner.dir\objects1.rsp
-C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\gcc.exe -g -Wl,--whole-archive CMakeFiles\rechner.dir/objects.a -Wl,--no-whole-archive -o rechner.exe -Wl,--out-implib,librechner.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\rechner.dir\linklibs.rsp

@@ -1,9 +1,7 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/generator.dir/Redundanz/generator.c.obj"
-  "generator.exe"
-  "generator.exe.manifest"
+  "CMakeFiles/generator.dir/Redundanz/generator.c.o"
+  "generator"
   "generator.pdb"
-  "libgenerator.dll.a"
 )
 
 # Per-language clean rules from dependency scanning.

@@ -1,3 +1,1 @@
-C:\Users\benbe\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\211.7142.21\bin\cmake\win\bin\cmake.exe -E rm -f CMakeFiles\primZahl.dir/objects.a
-C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\ar.exe cr CMakeFiles\primZahl.dir/objects.a @CMakeFiles\primZahl.dir\objects1.rsp
-C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\gcc.exe -g -Wl,--whole-archive CMakeFiles\primZahl.dir/objects.a -Wl,--no-whole-archive -o primZahl.exe -Wl,--out-implib,libprimZahl.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\primZahl.dir\linklibs.rsp
+/usr/bin/cc -g -rdynamic CMakeFiles/primZahl.dir/Fork/primZahl.c.o -o primZahl 

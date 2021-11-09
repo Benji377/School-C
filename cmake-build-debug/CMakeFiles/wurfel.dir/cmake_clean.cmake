@@ -1,8 +1,6 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/wurfel.dir/Erste_Programme/wurfel.c.obj"
-  "libwurfel.dll.a"
-  "wurfel.exe"
-  "wurfel.exe.manifest"
+  "CMakeFiles/wurfel.dir/Erste_Programme/wurfel.c.o"
+  "wurfel"
   "wurfel.pdb"
 )
 

@@ -1,8 +1,6 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/rekursive_fibonacci.dir/rekursiv/rekursive_fibonacci.c.obj"
-  "librekursive_fibonacci.dll.a"
-  "rekursive_fibonacci.exe"
-  "rekursive_fibonacci.exe.manifest"
+  "CMakeFiles/rekursive_fibonacci.dir/rekursiv/rekursive_fibonacci.c.o"
+  "rekursive_fibonacci"
   "rekursive_fibonacci.pdb"
 )
 

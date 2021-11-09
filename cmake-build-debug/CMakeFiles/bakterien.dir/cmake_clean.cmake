@@ -1,9 +1,7 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/bakterien.dir/matrix/bakterien.c.obj"
-  "bakterien.exe"
-  "bakterien.exe.manifest"
+  "CMakeFiles/bakterien.dir/matrix/bakterien.c.o"
+  "bakterien"
   "bakterien.pdb"
-  "libbakterien.dll.a"
 )
 
 # Per-language clean rules from dependency scanning.
