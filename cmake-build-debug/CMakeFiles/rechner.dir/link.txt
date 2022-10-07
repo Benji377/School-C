@@ -1,1 +1,0 @@
-/usr/bin/cc -g -rdynamic CMakeFiles/rechner.dir/Erste_Programme/rechner.c.o -o rechner 

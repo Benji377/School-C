@@ -1,1 +1,0 @@
-/usr/bin/cc -g -rdynamic CMakeFiles/rekursive_fibonacci.dir/rekursiv/rekursive_fibonacci.c.o -o rekursive_fibonacci 

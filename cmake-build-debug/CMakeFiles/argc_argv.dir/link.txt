@@ -1,1 +1,0 @@
-/usr/bin/cc -g -rdynamic CMakeFiles/argc_argv.dir/argc_argc/argc_argv.c.o -o argc_argv 

@@ -1,1 +1,0 @@
-/usr/bin/cc -g -rdynamic CMakeFiles/firstLayer.dir/Schichtenmodell/firstLayer.c.o -o firstLayer 

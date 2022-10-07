@@ -1,1 +1,0 @@
-/usr/bin/cc -g -rdynamic CMakeFiles/primZahl.dir/Fork/primZahl.c.o -o primZahl 

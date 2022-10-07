@@ -1,1 +1,0 @@
-/usr/bin/cc -g -rdynamic CMakeFiles/shell_main.dir/shell/shell_main.c.o -o shell_main 

@@ -1,1 +1,0 @@
-/usr/bin/cc -g -rdynamic CMakeFiles/prufung_plan.dir/prufung/prufung_plan.c.o -o prufung_plan 
